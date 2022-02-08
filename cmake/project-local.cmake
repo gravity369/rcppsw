@@ -143,8 +143,8 @@ find_package(rcsw)
 
 # Log4cxx
 if ("${LIBRA_ER}" MATCHES "ALL")
-  set(log4cxx_DIR ${LIBRA_DEPS_PREFIX})
-find_package(log4cxx)
+  set(log4cxx_ROOT ${LIBRA_DEPS_PREFIX})
+  find_package(log4cxx)
 endif()
 
 ################################################################################
@@ -152,9 +152,7 @@ endif()
 ################################################################################
 # Create the source for the SINGLE library to build by combining the
 # source of the selected components
-message("DIR: ${rcppsw_DIR}")
-message("PATH: ${rcppsw_SRC_PATH}")
-message("SRC: ${rcppsw_SRC}")
+
 foreach(component ${rcppsw_FIND_COMPONENTS})
   if(${rcppsw_${component}_FOUND})
     list(APPEND rcppsw_components_SRC ${rcppsw_} ${rcppsw_${component}_SRC})
